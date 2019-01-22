@@ -3,7 +3,6 @@
 *.bin
 *.eep
 *.elf
-*.hex
 *.qmk
 !util/bootloader.hex
 !quantum/tools/eeprom_reset.hex
@@ -15,8 +14,6 @@
 *.swp
 tags
 *~
-build/
-.build/
 *.bak
 .vagrant/
 quantum/version.h
