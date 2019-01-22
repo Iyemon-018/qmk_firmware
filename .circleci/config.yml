@@ -9,9 +9,6 @@ jobs:
           command: docker build -t qmk_firmware .
       - run:
           name: docker run
-          command: docker run -e keyboard=ergodox_ez -e keymap=default -v $('pwd'):/qmk:rw -t qmk_firmware
+          command: docker run -e keyboard=ergodox_ez -e keymap=default --rm -v $('pwd'):/qmk:rw -t qmk_firmware
       - store_artifacts:
-          path: .build/ergodox_ez_default.hex
-      - run:
-          name: docker remove
-          command: docker run --rm -t qmk_firmware
+          path: ergodox_ez_default.hex
