@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: docker build
+          command: docker build -t forked_qmk_build .
+      - run:
+          name: docker run
+          command: docker run -e keymap=default -e keyboard=ergodox_ez --rm -v $('pwd'):/qmk:rw -t forked_qmk_build
+      - store_artifacts:
+          path: .build/ergodox_ez_default.hex
