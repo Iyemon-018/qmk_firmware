@@ -17,4 +17,4 @@ jobs:
           path: .build
       - store_artifacts:
           path: qmk_firmware/.build
-      - run: ls .build
+      - run: ls /home/circleci/project/qmk_firmware/.build
