@@ -2,8 +2,11 @@ version: 2
 jobs:
   build:
     machine: true
+    environment:
+        CIRCLE_ARTIFACTS: /tmp/artifacts
     steps:
       - checkout
+      - run: mkdir -p $CIRCLE_ARTIFACTS
       - run:
           name: docker build
           command: docker build -t qmk_firmware .
@@ -14,3 +17,4 @@ jobs:
           path: .build
       - store_artifacts:
           path: qmk_firmware/.build
+      - run: ls .build
