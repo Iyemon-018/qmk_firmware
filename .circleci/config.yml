@@ -15,6 +15,6 @@ jobs:
       - store_artifacts:
           path: qmk_firmware/.build/ergodox_ez_default.hex
       - store_artifacts:
-          path: ~/project/.build
+          path: ~/project/ergodox_ez_default.hex
       - store_artifacts:
           path: ~/project/.build/ergodox_ez_default.hex
