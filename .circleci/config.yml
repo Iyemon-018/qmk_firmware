@@ -2,11 +2,8 @@ version: 2
 jobs:
   build:
     machine: true
-    environment:
-        CIRCLE_ARTIFACTS: /tmp/artifacts
     steps:
       - checkout
-      - run: mkdir -p $CIRCLE_ARTIFACTS
       - run:
           name: docker build
           command: docker build -t qmk_firmware .
@@ -14,7 +11,6 @@ jobs:
           name: docker run
           command: docker run -e keyboard=ergodox_ez -e keymap=default --rm -v $('pwd'):/qmk:rw -t qmk_firmware
       - store_artifacts:
-          path: .build
+          path: .build/ergodox_ez_default.hex
       - store_artifacts:
-          path: qmk_firmware/.build
-      - run: ls /home/circleci/project/qmk_firmware/.build
+          path: qmk_firmware/.build/ergodox_ez_default.hex
